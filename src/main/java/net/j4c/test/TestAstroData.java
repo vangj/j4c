@@ -29,14 +29,15 @@ import net.j4c.distance.MinkowskiDistance;
 
 /**
  * Tests k-means algorithm on generated
- * data from {@link GenerateData}.
+ * data from <a href="http://astrostatistics.psu.edu/su09/lecturenotes/clus2.html">
+ * http://astrostatistics.psu.edu/su09/lecturenotes/clus2.html</a>.
  * @author Jee Vang
  *
  */
 public class TestAstroData {
 
 	public static void main(String[] args) {
-		String pathname = "C:\\Users\\root\\Downloads\\sat.dat";
+		String pathname = "C:\\Users\\root\\Downloads\\sat.dat"; //change this to your actual location
 		List<ClusterItem> items = getClusterItems(pathname);
 		SilhouetteClusterer clusterer = new SilhouetteClusterer();
 		clusterer.setDistanceMeasure(new MinkowskiDistance(2.0d));
