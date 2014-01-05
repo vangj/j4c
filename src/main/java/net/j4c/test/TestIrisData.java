@@ -29,7 +29,7 @@ import net.j4c.centroid.Centroid;
 import net.j4c.distance.MinkowskiDistance;
 
 /**
- * Tests k-means algorithm on generated
+ * Tests k-means algorithm on iris
  * data from <a href="http://cs.joensuu.fi/sipu/datasets/">
  * http://cs.joensuu.fi/sipu/datasets/</a>.
  * @author Jee Vang
