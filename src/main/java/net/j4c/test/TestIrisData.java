@@ -20,6 +20,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.TreeMap;
 
 import net.j4c.ClusterItem;
 import net.j4c.ClusterItemClass;
@@ -46,7 +49,25 @@ public class TestIrisData {
 		List<Centroid> centroids = clusterer.getClusters(100, items);
 		for(Centroid centroid : centroids) {
 			System.out.println(centroid);
+			for(Entry<String, Integer> entry : getClassCounts(centroid).entrySet()) {
+				System.out.println(entry.getKey() + ", " + entry.getValue());
+			}
 		}
+	}
+	
+	public static Map<String, Integer> getClassCounts(Centroid centroid) {
+		Map<String, Integer> map = new TreeMap<String, Integer>();
+		int total = centroid.getNumOfClusterItems();
+		for(int i=0; i < total; i++) {
+			ClusterItemClass clusterItem = (ClusterItemClass)centroid.getClusterItem(i);
+			String clazz = clusterItem.getClazz();
+			int count = 1;
+			if(map.containsKey(clazz)) {
+				count += map.get(clazz);
+			}
+			map.put(clazz, count);
+		}
+		return map;
 	}
 	
 	/**

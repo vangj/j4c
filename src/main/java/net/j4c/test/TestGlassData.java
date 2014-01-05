@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 
 import net.j4c.ClusterItem;
 import net.j4c.ClusterItemClass;
@@ -46,6 +47,9 @@ public class TestGlassData {
 		List<Centroid> centroids = clusterer.getClusters(100, items);
 		for(Centroid centroid : centroids) {
 			System.out.println(centroid);
+			for(Entry<String, Integer> entry : TestIrisData.getClassCounts(centroid).entrySet()) {
+				System.out.println(entry.getKey() + ", " + entry.getValue());
+			}
 		}
 	}
 	
@@ -67,7 +71,7 @@ public class TestGlassData {
 				String clazz = tokens[tokens.length-1].trim();
 				ClusterItem item = new ClusterItemClass(id, clazz);
 				for(int i=1; i < tokens.length-1; i++) {
-					item.add(new IndexValue(i, Double.parseDouble(tokens[i])));
+					item.add(new IndexValue(i-1, Double.parseDouble(tokens[i])));
 				}
 				items.add(item);
 			}
