@@ -38,7 +38,7 @@ import net.j4c.distance.MinkowskiDistance;
 public class TestGlassData {
 
 	public static void main(String[] args) {
-		String pathname = "C:\\Users\\root\\Downloads\\iris.txt"; //change this to your actual location
+		String pathname = "C:\\Users\\root\\Downloads\\glass.txt"; //change this to your actual location
 		List<ClusterItem> items = getClusterItems(pathname);
 		SilhouetteClusterer clusterer = new SilhouetteClusterer();
 		clusterer.setDistanceMeasure(new MinkowskiDistance(2.0d));
