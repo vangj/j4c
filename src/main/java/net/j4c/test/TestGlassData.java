@@ -66,7 +66,7 @@ public class TestGlassData {
 				String id = tokens[0].trim();
 				String clazz = tokens[tokens.length-1].trim();
 				ClusterItem item = new ClusterItemClass(id, clazz);
-				for(int i=0; i < tokens.length-1; i++) {
+				for(int i=1; i < tokens.length-1; i++) {
 					item.add(new IndexValue(i, Double.parseDouble(tokens[i])));
 				}
 				items.add(item);
